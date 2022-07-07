@@ -1,0 +1,14 @@
+<div class="container">
+<h1> Details of <%=@employee.first_name%></h1>
+<hr>
+<p style="color: green"><%= notice %></p>
+
+<%= render @employee %>
+
+<div>
+  <%= link_to "Edit", edit_company_employee_path(@company,@employee) ,class:"btn btn-secondary" %> 
+ <%= link_to "Back", company_path(@company) ,class:"btn btn-secondary"%>
+</div>
+<br>
+
+</div>

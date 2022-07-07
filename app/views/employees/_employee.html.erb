@@ -1,0 +1,33 @@
+<div class="container">
+<div id="<%= dom_id employee %>">
+  <p>
+    <strong>First name:</strong>
+    <%= employee.first_name %>
+  </p>
+
+  <p>
+    <strong>Last name:</strong>
+    <%= employee.last_name %>
+  </p>
+
+  <p>
+    <strong>Mobile number:</strong>
+    <%= employee.mobile_number %>
+  </p>
+
+  <p>
+    <strong>Address:</strong>
+    <%= employee.address %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= employee.email %>
+  </p>
+
+<p>
+    <strong>Company:</strong>
+    <%=Company.find(employee.company.id).company_name %>
+  </p>
+</div>
+</div>

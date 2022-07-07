@@ -1,0 +1,36 @@
+ <nav class="navbar bg-primary">
+  <div class="container-fluid">
+      <div class="navbar-brand d-flex align-items-center" href="#" >
+     
+   <div class="head" style="font-size: 30px;color:white;" >Dashboard</div> 
+    </div>
+    <form class="d-flex" >
+    <%= link_to "New company", new_company_path, class:"btn btn-success mx-2" %>    
+   
+    </form>
+  </div>
+</nav>
+<div class="container">
+<p style="color: green"><%= notice %></p>
+
+<h1>Companies</h1>
+<hr>
+<div class="container-fluid ">
+<div class="d-flex row row-cols-1 row-cols-md-3 g-4 mx-4">
+  <% @companies.each do |company| %>
+<div class="card mx-2" style="max-width: 390px;">
+  <div class="row g-0">
+  
+      <div class="card-body">
+        <h5 class="card-title"><%= company.company_name%></h5>
+       
+          </div>
+      <div class="card-footer justify-content-between">
+        <%#= link_to "Edit", edit_company_path(company), class: "btn btn-outline-warning" %>
+         <%= link_to "Show", company_path(company), class:"btn btn-outline-success" %> 
+      </div>
+    </div>
+</div>
+<% end %>
+</div>
+</div>
