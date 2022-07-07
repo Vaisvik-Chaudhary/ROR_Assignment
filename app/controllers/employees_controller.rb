@@ -9,18 +9,11 @@ class EmployeesController < ApplicationController
 
   # GET /employees/1 or /employees/1.json
   def show
-  #   @company = Company.find(params[:company_id])
-  #   @employee = Employee.find(params[:id])
-  # @company = @employee.company
   end
 
   # GET /employees/new
   def new
     @employee = @company.employees.build
-    # @employee = Employee.new(company_id: params[:company_id])
-    # @company=Company.find_by(id: params[:id])
-    # p @company
-    # @company = Company.employees.find(params[:employee])
   end
 
   # GET /employees/1/edit
