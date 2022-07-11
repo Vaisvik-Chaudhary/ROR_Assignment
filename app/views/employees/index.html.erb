@@ -1,43 +1,35 @@
- <nav class="navbar bg-secondary">
-  <div class="container-fluid">
-      <div class="navbar-brand d-flex align-items-center" href="#" >
-     
-   <div class="head" style="font-size: 30px;color:white;" >Dashboard</div> 
-    </div>
-    <form class="d-flex" >
-  <%= link_to "Company", companies_path, class: "btn btn-success"%>
+  <div class="mt-2 mx-3">
+  <%= link_to "Back", company_path(@company), class:"btn btn-secondary" %>
+  <div class="container mt-2">
   
-    </form>
-  </div>
-</nav>
+<h1>Employees Details </h1>
+<div id="employees">
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Number</th>
+      <th scope="col">Show</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
 
-<div class="container">
-<p style="color: green"><%= notice %></p>
-
-<h1>Employees</h1>
-<hr>
-
-<div class="container-fluid ">
-<div class="d-flex row row-cols-1 row-cols-md-3 g-4 mx-4">
- <% @employees.each do |employee| %>
-<div class="card mx-2" style="max-width: 390px;">
-  <div class="row g-0">
-  
-      <div class="card-body">
-        <h5 class="card-title"><%= employee.first_name%></h5>
-         <h5 class="card-title"><%= employee.company.company_name%></h5>
-      
-          </div>
-      <div class="card-footer justify-content-between">
-        <%= link_to "Edit", edit_company_employee_path(@company,employee), class: "btn btn-outline-warning" %>
-         <%= link_to "Show", company_employee_path(@company, employee), class:"btn btn-outline-success" %> 
-      </div>
-      <br>
-     
-      
-    </div>
-
-</div>
-<% end %>
+  <tbody>
+   <% @company.employees.each do |employee| %>
+      <tr>
+        <td><%= employee.first_name %></td>
+        <td><%= employee.last_name %></td>
+          <td><%= employee.email %></td>
+            <td><%= employee.mobile_number %></td>
+        <td><%= link_to 'Show', company_employee_path(@company, employee) ,class:"btn btn-secondary"%></td>
+        <td><%= link_to 'Edit ', edit_company_employee_path(@company, employee),class:"btn btn-secondary" %></td>
+        <td><%= button_to 'Delete', [@company, employee], method: :delete, data: { confirm: 'Are you sure?' },class:"btn btn-danger" %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
 </div>
 </div>
