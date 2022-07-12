@@ -6,8 +6,8 @@ class CreateEmployees < ActiveRecord::Migration[7.0]
       t.string :mobile_number
       t.text :address
       t.string :email
+      t.references :company, null: false, foreign_key: true
       t.timestamps
     end
-    add_reference :employees, :company, null: false, foreign_key: true
   end
 end

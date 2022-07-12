@@ -29,9 +29,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_06_104203) do
     t.string "mobile_number"
     t.text "address"
     t.string "email"
+    t.bigint "company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "company_id", null: false
     t.index ["company_id"], name: "index_employees_on_company_id"
   end
 

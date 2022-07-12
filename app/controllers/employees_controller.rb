@@ -18,31 +18,29 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = @company.employees.build(employee_params)
-    respond_to do |format|
       if @employee.save
-        format.html { redirect_to company_path(@company), notice: "Employee was successfully created." }
+        flash[:notice] = "Employee was successfully created."
+        redirect_to company_path(@company)
       else
-        format.html { render :new, status: :unprocessable_entity }
+        flash.now[:alert] = "Something went wrong, Please try again."
+        render :new
       end
-    end
   end
 
   def update
-    respond_to do |format|
       if @employee.update(employee_params)
-        format.html { redirect_to company_employee_path(@company), notice: "Employee was successfully updated." }
+        flash[:notice] = "Employee was successfully updated."
+        redirect_to company_employee_path(@company)
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        flash.now[:alert] = "Something went wrong, Please try again."
+        render :edit
       end
-    end
   end
 
   def destroy
     @employee.destroy
-
-    respond_to do |format|
-      format.html { redirect_to company_path(@company), notice: "Employee was successfully destroyed." }
-    end
+      flash[:notice] = "Employee was successfully destroyed."
+      redirect_to company_path(@company)
   end
 
   private

@@ -18,34 +18,30 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
-
-    respond_to do |format|
       if @company.save
-        format.html { redirect_to company_url(@company), notice: "Company was successfully created." }
+        flash[:notice] = "Company was successfully created."
+        redirect_to company_url(@company)
       else
-        format.html { render :new, status: :unprocessable_entity }
+        flash.now[:alert] = "Something went wrong, Please try again."
+        render :new
       end
-    end
   end
 
 
   def update
-    respond_to do |format|
       if @company.update(company_params)
-        format.html { redirect_to company_url(@company), notice: "Company was successfully updated." }
+        flash[:notice] = "Company was successfully updated."
+        redirect_to company_url(@company)
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        flash.now[:alert] = "Something went wrong, Please try again."
+        render :edit
       end
-    end
   end
 
-  
   def destroy
     @company.destroy
-
-    respond_to do |format|
-      format.html { redirect_to companies_url, notice: "Company was successfully destroyed." }
-    end
+      flash[:notice] = "Company was successfully destroyed."
+      redirect_to companies_url
   end
 
   private
